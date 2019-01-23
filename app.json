@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/upload/upload",
+    "pages/questionnaire/questionnaire",
+    "pages/index/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  }
+}

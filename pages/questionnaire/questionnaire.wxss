@@ -1,0 +1,26 @@
+@import "../common/lib/weui.wxss";
+
+/**index.wxss**/
+.container{
+  display: flex;
+  flex-direction: column;
+  background-color: #F0F0F0;
+  padding: 0 30rpx 40rpx;
+}
+.question-list{
+  margin-top: 50rpx;
+}
+.question-list-item {
+  margin: 40rpx 15rpx;
+  background-color: #FFFFFF;
+  border-radius: 4rpx;
+}
+.question-list-item:first-child {
+  margin-top: 0;
+}
+.question-list-text{
+  padding-top: 15rpx;
+  padding-left: 32rpx;
+  padding-bottom: 5rpx;
+  font-size: 34rpx;
+}

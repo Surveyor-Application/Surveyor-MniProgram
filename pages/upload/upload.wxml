@@ -12,7 +12,7 @@
             <view class="weui-uploader__files">
               <block wx:for="{{imgList}}" wx:for-item="image">
                 <view class="weui-uploader__file">
-                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                  <image class="weui-uploader__img" src="{{image}}" data-src="{{image}}" id="{{index}}" bindtap="previewImage"></image>
                 </view>
               </block>
             </view>
@@ -22,7 +22,7 @@
           </view> 
           <view class="weui-uploader__bd">
             <view>
-              <button class="weui-btn" type="primary" bindtap="submitImg">上传</button>
+              <button class="weui-btn" type="primary" bindtap="uploadImg">上传</button>
             </view>
           </view>
         </view>

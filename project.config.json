@@ -4,15 +4,16 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.0.4",
-	"appid": "wx9ea5128f9cf03687",
+	"appid": "wx9667e18fdb3c6107",
 	"projectname": "ReadMe-Miniprogram",
 	"debugOptions": {
 		"hidedInDevtools": []

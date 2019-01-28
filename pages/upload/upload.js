@@ -2,10 +2,13 @@
 Page({
   data: {
     count: 5,
-    imgList: []
+    imgList: [],
+    result: []
   },
+
   previewImage(e) {
     const imgList = this.data.imgList
+    var idx = e.currentTarget.id
     wx.previewImage({
       current: imgList[idx],
       urls: imgList,
@@ -13,11 +16,11 @@ Page({
       fail: function (res) { },
       complete: function (res) { },
     })
-    console.log(imgList)
   },
+
   chooseImage(e) {
     const that = this
-    wx:wx.chooseImage({
+    wx.chooseImage({
       count: 5,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
@@ -26,10 +29,27 @@ Page({
         that.setData({
           imgList: res.tempFilePaths
         })
-        console.log(that.data.imgList)
       },
       fail: function(res) {},
       complete: function(res) {},
+    })
+  },
+  
+  uploadImg(e) {
+    wx.request({
+      url: 'http://127.0.0.1:8000/readme/image',
+      data: {
+        len: this.data.imgList.length,
+        imgs: this.data.imgList
+      },
+      success: res => {
+        if (res.statusCode == 200) {
+          this.setData({
+            result: res.data
+          })
+        }
+        console.log(this.data.result)
+      }
     })
   }
 })

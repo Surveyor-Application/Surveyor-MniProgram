@@ -1,17 +1,25 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="question-list">
-    <block wx:for="{{list}}">
-      <view class="question-list-item">
-        <view class="question-list-text">{{item.id}}. {{item.question}}</view>
-        <view class="page-section">
-        <view class="weui-cells weui-cells_after-title">
-          <view class="weui-cell weui-cell_input">
-          <input class="weui-input" maxlength="30" placeholder="最大输入长度为30" />
+  <form bindsubmit="formSubmit">
+    <view class="question-list">
+      <block wx:for="{{list}}" >
+        <view class="question-list-item">
+          <view class="question-list-text">{{index+1}}. {{item.question}}</view>
+          <view class="page-section">
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+            <input class="weui-input" maxlength="30" placeholder="最大输入长度为30" name="input" 
+           id="{{index}}" bindblur="formInput"/>
+            </view>
           </view>
         </view>
+        </view> 
+      </block>
+    </view>
+    <view class="weui-uploader__bd">
+      <view>
+        <button class="weui-btn" type="primary" form-type="submit">提交</button>
       </view>
-      </view> 
-    </block>
-  </view>
+    </view>
+  </form>
 </view>

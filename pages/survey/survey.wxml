@@ -9,7 +9,7 @@
           <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_input">
             <input class="weui-input" maxlength="30" placeholder="最大输入长度为30" name="input" 
-           id="{{index}}" bindblur="formInput"/>
+           data-id="{{index}}" bindblur="formInput"/>
             </view>
           </view>
         </view>

@@ -1,7 +1,7 @@
 {
   "pages":[
+    "pages/survey/survey",
     "pages/upload/upload",
-    "pages/questionnaire/questionnaire",
     "pages/index/index"
   ],
   "window":{

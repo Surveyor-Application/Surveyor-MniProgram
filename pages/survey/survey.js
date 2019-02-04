@@ -22,12 +22,16 @@ Page({
 
   formSubmit(e) {
     var that = this
+    var queid = 1
+    var surid = that.data.id
+    var answer = that.data.answer
     wx.request({
       url: 'http://localhost:8080/answer/insert',
+      method: "POST",
       data: {
-        queid: 1,
-        surid: that.data.id,
-        answer: that.data.answer
+        queid: queid,
+        surid: surid,
+        content: answer
       }, 
       success: res => {
         if(res.statusCode == 200) {
@@ -40,10 +44,9 @@ Page({
   },
   formInput(e) {
     var id = e.target.dataset.id + 1
-    console.log(id)
     this.data.answer = e.detail.value
     this.setData ({
-      id: this.data.id, 
+      id: id, 
       answer: this.data.answer
     })
     console.log(this.data.answer)

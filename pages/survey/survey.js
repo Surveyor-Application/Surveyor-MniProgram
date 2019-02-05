@@ -1,54 +1,60 @@
 
 Page({
   data: {
-    list: [
-      {
-        question: 'This is question 1.'
-      }
-      // , {
-      //   question: 'This is question 2'
-      // }, {
-      //   question: 'This is question 3'
-      // }, {
-      //   question: 'This is question 4'
-      // }, {
-      //   question: 'This is question 5'
-      // }
-    ],
+    list: [],
     id: [],
     answer: [],
     result: []
   },
 
-  formSubmit(e) {
+  onLoad(opts) {
     var that = this
-    var queid = 1
-    var surid = that.data.id
-    var answer = that.data.answer
     wx.request({
-      url: 'http://localhost:8080/answer/insert',
-      method: "POST",
+      url: 'http://localhost:8080/question/list', 
       data: {
-        queid: queid,
-        surid: surid,
-        content: answer
-      }, 
+        surid: 1
+      },
       success: res => {
-        if(res.statusCode == 200) {
-          that.setData({
-            result: res.data
-          })
-        }
+        that.setData ({
+          list: res.data
+        })
       }
     })
   },
+
+  formSubmit(e) {
+    var that = this
+    var surid = 1
+    var queid = that.data.id
+    var answer = that.data.answer
+    for( var i = 0; i < this.data.answer.length; i++) {
+      wx.request({
+        url: 'http://localhost:8080/answer/insert',
+        method: "POST",
+        data: {
+          surid: surid,
+          queid: queid[i],
+          content: answer[i]
+        },
+        success: res => {
+          if (res.statusCode == 200) {
+            that.setData({
+              result: res.data
+            })
+            console.log(that.data.result)
+          }3
+        }
+      })
+    }
+  },
+
   formInput(e) {
-    var id = e.target.dataset.id + 1
-    this.data.answer = e.detail.value
+    var qid = e.target.dataset.id
+    this.data.id[qid] = qid + 1
+    this.data.answer[qid] = e.detail.value
     this.setData ({
-      id: id, 
+      id: this.data.id, 
       answer: this.data.answer
     })
-    console.log(this.data.answer)
   }
 })
